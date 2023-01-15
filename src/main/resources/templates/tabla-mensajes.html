@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>CEPyC - Edición</title>
+
+    <!-- STYLES -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"/>
+    <link rel="shortcut icon" th:href="@{images/logocepyc.png}" type="image/png" />
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{css/LineIcons.css}" />
+    <link rel="stylesheet" th:href="@{font-awesome-4.7.0/css/font-awesome.min.css}" />
+    <link rel="stylesheet" th:href="@{css/magnific-popup.css}" />
+    <link rel="stylesheet" th:href="@{css/slick.css}" />
+    <link rel="stylesheet" th:href="@{css/animate.css}" />
+    <link rel="stylesheet" th:href="@{css/default.css}" />
+    <link rel="stylesheet" th:href="@{css/editable.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{css/estilos.css}" type="text/css"/>
+    <!-- STYLES -->
+</head>
+
+<body>
+    <!------------------- START ------------------------->
+    <!------------------ PRELOADER ---------------------->
+    <!--------------------------------------------------->
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------- END ------------------------->
+    <!------------------ PRELOADER ---------------------->
+    <!--------------------------------------------------->
+
+
+
+
+    <!-------------------- START ------------------------>
+    <!-------------------- HEADER ----------------------->
+    <!--------------------------------------------------->
+    <section class="header-area">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="/">
+                                <img src="../images/Nombre completo.png" alt="Logo">
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarEight" aria-controls="navbarEight" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarEight">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" role="button" href="/logout">Cerrar Sesión</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav> 
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>
+    <!--------------------- END ------------------------->
+    <!-------------------- HEADER ----------------------->
+    <!--------------------------------------------------->
+
+
+
+
+    <!----------------- START SECTION ------------------->
+    <!----------------- WHEN THERE'S -------------------->
+    <!-------------------- PRODUCTS --------------------->
+
+    <section th:if="${!productos.isEmpty()}">
+        <section id="seccion-tabla" class="container">
+            <div class="justify-content-center align-items-center text-center">
+
+                <h2 class="mb-2">Productos</h2>
+
+                <div class="d-flex justify-content-center align-items-center tabla-wrapper">
+                    <table class="table productTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Foto</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Contacto</th>
+                                <th scope="col">Unidad Productiva</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="producto : ${productos}">
+                                <td>
+                                    <a th:href="@{/producto/obtener-foto/{id}(id=${producto.id})}"
+                                        id="showPhotosButton" class="btn btn-primary btn-sm bg-gradient">
+                                        Ver foto
+                                    </a>
+                                </td>
+                                <td th:text="${producto.nombre}"></td>
+                                <td th:text="${producto.descripcion}"></td>
+                                <td th:text="${producto.contacto}"></td>
+                                <td th:text="${producto.unidadProductiva}"></td>
+                                <td>
+                                    <a th:href="@{/producto/obtener-producto/{id}(id=${producto.id})}"
+                                        class="btn btn-primary bg-gradient rounded-pill btn-sm" id="editProductButton">
+                                        Editar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/producto/eliminar-producto/(id=${producto.id})}"
+                                        class="btn btn-danger bg-gradient rounded-pill btn-sm">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Button trigger ADD Modal -->
+                <button type="button" class="mb-4 btn-sm bg-gradient btn-primary col-4 rounded-pill fs-5 align-items-center"
+                    data-bs-toggle="modal" data-bs-target="#addProductModal">
+                    Agregar producto
+                </button>
+
+
+            </div>
+        </section>
+
+        <!-- ADD PRODUCT Modal -->
+        <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="addProductModalLabel">Crear producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="container">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-10" id="formulario">
+                                    <form id="contact-form" th:action="@{/producto/guardar-producto}" method="post"
+                                        enctype="multipart/form-data">
+
+                                        <div class="form-input">
+                                            <label class="fs-6 m-3">Foto</label>
+                                            <div class="input-items default">
+                                                <input type="file" placeholder="Imagen" name="archivo1" required="false">
+                                                <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Nombre</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Nombre" name="nombre" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div> 
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Descripción</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Descripción" name="descripcion"
+                                                    required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div> 
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Contacto</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Contacto" name="contacto" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Unidad Productiva</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Unidad Productiva"
+                                                    name="unidadProductiva" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Guardar
+                                                    cambios</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT PRODUCT Modal -->
+
+        <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="editProductModalLabel">Editar producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <section class="container">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-10" id="formulario">
+                                    <form th:action="@{/producto/editar-producto}" method="put"
+                                        enctype="multipart/form-data">
+
+                                        <input type="hidden" name="idProductEdit" id="idProductEdit" value="">
+
+                                        <div class="form-input">
+                                            <label class="fs-6 m-3">Foto</label>
+                                            <p style="color:red ;">(Si no se carga una nueva imagen, quedará la que ya
+                                                tenía).</p>
+                                            <div class="input-items default">
+                                                <input type="file" placeholder="Imagen" name="archivoEdit0"
+                                                    id="fileProductEdit">
+                                                <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-5 m-3">Nombre</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="nombreEdit"
+                                                    id="nameProductEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-5 m-3">Descripción</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="descripcionEdit"
+                                                    id="descriptionProductEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-5 m-3">Contacto</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="contactoEdit"
+                                                    id="contactProductEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-5 m-3">Unidad Productiva</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="unidadEdit"
+                                                    id="productiveUnitProductEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Guardar
+                                                    cambios</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- SHOW PHOTOS Modal -->
+        <div class="modal fade" id="showPhotosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Foto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="photoContainer row">
+                            <img alt="..." id="productPhoto" class="productPhoto">
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="lineaMansa4">
+
+        
+    </section>
+    <!------------------ END SECTION -------------------->
+    <!----------------- WHEN THERE IS ------------------->
+    <!-------------------- PRODUCT ---------------------->
+
+
+
+
+    <!------------- START PRODUCT SECTION --------------->
+    <!--------------- WHEN THERE IS NOT ----------------->
+    <!-------------------- PRODUCT ---------------------->
+
+    <section th:if="${productos.isEmpty()}">
+        <section id="seccion-tabla" class="container">
+            <div class="row justify-content-center text-center">
+                <div id="titulo">
+                    <h2 class="justify-content-center mb-2">Productos</h2>
+                </div>
+
+                <h2 class="mb-3">¡Aún no hay productos cargados!</h2>
+
+                <!-- Button trigger ADD Modal -->
+                <button type="button" class="mb-4 btn bg-gradient btn-primary col-4 rounded-pill fs-5"
+                    data-bs-toggle="modal" data-bs-target="#addProductModal2">
+                    Agregar producto
+                </button>
+            </div>
+        </section>
+        <hr class="lineaMansa4">
+
+        <!-- ADD PRODUCT Modal -->
+        <div class="modal fade" id="addProductModal2" tabindex="-1" aria-labelledby="addProductModal2Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="addProductModal2Label">Crear producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="container">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-10" id="formulario">
+                                    <form id="contact-form" th:action="@{/producto/guardar-producto}" method="post"
+                                        enctype="multipart/form-data">
+
+                                        <div class="form-input">
+                                            <label class="fs-6 m-3">Foto</label>
+                                            <div class="input-items default">
+                                                <input type="file" placeholder="Imagen" name="archivo1" required="false">
+                                                <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Nombre</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Nombre" name="nombre" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div> 
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Descripción</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Descripción" name="descripcion"
+                                                    required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div> 
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Contacto</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Contacto" name="contacto" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Unidad Productiva</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Unidad Productiva"
+                                                    name="unidadProductiva" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Guardar
+                                                    cambios</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-------------- END PRODUCT SECTION ---------------->
+    <!--------------- WHEN THERE IS NOT ----------------->
+    <!--------------------------------------------------->
+
+
+
+
+
+    <!----------------- START SECTION ---------------------->
+    <!---------------- PRODUCTIVE UNIT --------------------->
+    <!-----------------  WHEN THERE'S ---------------------->
+
+    <section th:if="${!unidades.isEmpty()}">
+        <section id="seccion-tabla" class="container">
+            <div class="justify-content-center align-items-center text-center">
+              
+                    <h2 class="mb-2">Unidades Productivas</h2>
+                
+                <div class="d-flex justify-content-center align-items-center tabla-wrapper">                    
+                    <table class="table productTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Produccion</th>
+                                <th scope="col">Departamento</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="unidad : ${unidades}">
+                                <td th:text="${unidad.nombre}">
+                                </td>
+                                <td th:text="${unidad.produccion}"></td>
+                                <td th:text="${unidad.departamento}"></td>
+                                <td th:text="${unidad.direccion}"></td>
+                                <td>
+                                    <a th:href="@{/unidad-productiva/obtener-unidad/{id}(id=${unidad.id})}"
+                                        class="btn btn-primary bg-gradient rounded-pill btn-sm" id="editPuButton">
+                                        Editar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/unidad-productiva/eliminar-unidad/(id=${unidad.id})}"
+                                        class="btn btn-danger bg-gradient rounded-pill btn-sm">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Button trigger ADD Modal -->
+                <button type="button" class="mb-4 btn bg-gradient btn-primary col-4 rounded-pill fs-5"
+                    data-bs-toggle="modal" data-bs-target="#addPu">
+                    Agregar Unidad Productiva
+                </button>
+
+
+            </div>
+        </section>
+
+        <!-- ADD PRODUCTIVE UNIT Modal -->
+        <div class="modal fade" id="addPu" tabindex="-1" aria-labelledby="addPuModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="PuModalLabel">Crear Unidad Productiva</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="container">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-10" id="formulario">
+                                    <form id="contact-form" th:action="@{/unidad-productiva/guardar-unidad}" method="post"
+                                        enctype="multipart/form-data">
+
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Nombre</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Nombre" name="nombre" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Producción</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Producción" name="produccion"
+                                                    required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Departamento</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Departamento" name="departamento" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-input mt-15">
+                                            <label class="fs-6 m-3">Dirección</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Dirección"
+                                                    name="direccion" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Guardar
+                                                    cambios</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT PRODUCTIVE UNIT Modal -->
+
+        <div class="modal fade" id="editPuModal" tabindex="-1" role="dialog" aria-labelledby="editPuModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="editProductModalLabel">Editar Unidad Productiva</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <section class="container">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-10" id="formulario">
+                                    <form th:action="@{/unidad-productiva/editar-unidad}" method="put"
+                                        enctype="multipart/form-data">
+
+                                        <input type="hidden" name="idPuEdit" id="idPuEdit" value="">
+
+                                            <label class="fs-5 m-3">Nombre</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="nombrePuEdit"
+                                                    id="namePuEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        
+                                        <div class="form-input mt-15">
+                                            <label class="fs-5 m-3">Producción</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="produccionPuEdit"
+                                                    id="produccionPuEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-5 m-3">Departamento</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="departamentoPuEdit"
+                                                    id="departamentoPuEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <label class="fs-5 m-3">Dirección</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="direccionPuEdit"
+                                                    id="direccionPuEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Guardar
+                                                    cambios</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cerrar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="lineaMansa4"></hr>
+    </section>
+
+    <!------------ END PRODUCTIVE UNIT SECTION ------------->
+    <!-------------------WHEN THERE'S ---------------------->
+    <!------------------------------------------------------>
+
+
+
+
+    <!------------------ START SECTION --------------------->
+    <!----------------- PRODUCTIVE UNIT ------------------->
+    <!----------------- WHEN THERE ISN'T ------------------->
+    <section th:if="${unidades.isEmpty()}">
+        <section id="seccion-tabla" class="container">
+            <div class="row justify-content-center text-center">
+
+                <div id="titulo">
+                    <h2 class="justify-content-center mb-2">Unidades Productivas</h2>
+                </div>
+
+                <h2 class="mb-3">¡Aún no hay unidades cargadas!</h2>
+
+                <!-- Button trigger ADD Modal -->
+                <button type="button" class="mb-4 btn bg-gradient btn-primary col-4 rounded-pill fs-5"
+                    data-bs-toggle="modal" data-bs-target="#addPu2">
+                    Agregar producto
+                </button>
+            </div>
+
+            <!-- ADD PRODUCTIVE UNIT Modal -->
+            <div class="modal fade" id="addPu2" tabindex="-1" aria-labelledby="addPu2ModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title fs-5" id="PuModalLabel">Crear Unidad Productiva</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <section class="container">
+                                <div class="row justify-content-center text-center">
+                                    <div class="col-10" id="formulario">
+                                        <form id="contact-form" th:action="@{/unidad-productiva/guardar-unidad}" method="post"
+                                            enctype="multipart/form-data">
+
+                                            <div class="form-input mt-15">
+                                                <label class="fs-6 m-3">Nombre</label>
+                                                <div class="input-items default">
+                                                    <input type="text" placeholder="Nombre" name="nombre" required>
+                                                    <i class="fa fa-tag" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-input mt-15">
+                                                <label class="fs-6 m-3">Producción</label>
+                                                <div class="input-items default">
+                                                    <input type="text" placeholder="Producción" name="produccion"
+                                                        required>
+                                                    <i class="fa fa-tag" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-input mt-15">
+                                                <label class="fs-6 m-3">Departamento</label>
+                                                <div class="input-items default">
+                                                    <input type="text" placeholder="Departamento" name="departamento" required>
+                                                    <i class="fa fa-tag" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-input mt-15">
+                                                <label class="fs-6 m-3">Dirección</label>
+                                                <div class="input-items default">
+                                                    <input type="text" placeholder="Dirección"
+                                                        name="direccion" required>
+                                                    <i class="fa fa-tag" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Guardar
+                                                        cambios</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr class="lineaMansa4">
+    </section>
+
+    <!------------------- END SECTION ---------------------->
+    <!------------------- PRODUCTIVE ----------------------->
+    <!---------------------- UNIT ------------------------->
+
+
+    <!-- CUANDO SI HAY PUBLICACIONES -->
+
+    <section th:if="${!publicaciones.isEmpty()}">
+        <section id="seccion-tabla" class="container">
+            <div class="justify-content-center align-items-center text-center">
+
+                <h2 class=" mb-2">Publicaciones</h2>
+
+                <div class="d-flex justify-content-center align-items-center tabla-wrapper">
+                    <table class="table postTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Título</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="publicacion: ${publicaciones}">
+                                <td th:text="${publicacion.titulo}"></td>
+                                <td>
+                                    <a th:href="@{/publicacion/obtener-publicacion/{id}(id=${publicacion.id})}" 
+                                    class="btn btn-primary bg-gradient rounded-pill btn-sm" 
+                                    id="editPostButton"> 
+                                        Editar
+                                    </a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/publicacion/eliminar-publicacion/(id=${publicacion.id})}" 
+                                    class="btn btn-danger bg-gradient rounded-pill btn-sm" id="deletePostButton"> 
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                    <!-- Button trigger ADD Modal -->
+                    <button type="button" class="mb-4 btn bg-gradient btn-primary col-4 rounded-pill fs-5"
+                        data-bs-toggle="modal" data-bs-target="#addPostModal">
+                        Agregar publicación
+                    </button>
+
+                
+            </div>
+        </section>
+
+        <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="addPostModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="addPostModalLabel">Crear publicación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="container">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-10" id="formulario">
+                                    <form id="contact-form" th:action="@{/publicacion/guardar-publicacion}" method="post"
+                                        enctype="multipart/form-data">
+                                        
+                                        <div class="form-input m-5">
+                                            <label class="fs-5 mb-3">Título</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Algo que identifique la publicación" name="titulo" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div> 
+                                        <div class="form-input m-5">
+                                            <label class="fs-5 mb-3">Link de la publicación</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Copia y pega la URL desde Instagram" name="linkInstagram" required>
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <div class="row">
+
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Guardar
+                                                        cambios</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDIT Modal -->
+        <div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="editPostModalLabel">Editar publicación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <section class="container">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-10" id="formulario">
+                                    <form action="/publicacion/editar-publicacion" method="put">
+                                        <input type="hidden" name="idEdit" id="idPostEdit" value="">
+
+                                        <div class="form-input mt-15">
+                                            <label class="fs-5 m-3">Título</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Título" name="tituloEdit"
+                                                    id="tituloPostEdit" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <div class="row">
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        Guardar
+                                                        cambios
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">
+                                                        Cerrar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DELETE MODAL -->
+        <div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-labelledby="deletePostModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="deletePostModalLabel">¿Eliminar publicacion?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>                  
+                        <a id="yesDelete" href="" type="submit" class="btn btn-primary">Confirmar</a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>           
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUANDO NO HAY PUBLICACIONES -->
+
+    <section th:if="${publicaciones.isEmpty()}">
+        <section id="seccion-tabla" class="container">
+            <div class="row justify-content-center text-center">
+                
+                <div id="titulo">
+                    <h2 class="justify-content-center mb-2">Sección de publicaciones</h2>
+                </div>
+
+                <h2 class="mb-3">¡ Aún no hay publicaciones !</h2>
+
+                <button type="button" class="mb-4 btn btn-primary col-3 bg-gradient rounded-pill" data-bs-toggle="modal"
+                    data-bs-target="#addPostModal2">
+                    Agregar publicación
+                </button>
+            </div>
+        </section>
+
+        <div class="modal fade" id="addPostModal2" tabindex="-1" aria-labelledby="addPostModal2Label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fs-5" id="addPostModal2">Crear publicación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="container">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-10" id="formulario">
+                                    <form id="contact-form" th:action="@{/publicacion/guardar-publicacion}" method="post">
+                                        <div class="form-input m-5">
+                                            <label class="fs-5 mb-3">Título</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Algo que identifique la publicación" name="titulo" required>
+                                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input m-5">
+                                            <label class="fs-5 mb-3">Link de la publicación</label>
+                                            <div class="input-items default">
+                                                <input type="text" placeholder="Copia y pega la URL desde Instagram" name="linkInstagram" required>
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-input mt-15">
+                                            <div class="row">
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Guardar
+                                                        cambios</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cerrar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48
+        }
+    </style>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48
+        }
+    </style>
+
+
+    <script th:src="@{assets/vendor/aos/aos.js}"></script>
+    <script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+
+    <script thsrc="@{assets/js/main.js}"></script>
+
+    <script th:src="@{js/vendor/modernizr-3.6.0.min.js}"></script>
+    <script th:src="@{js/vendor/jquery-1.12.4.min.js}"></script>
+
+    <script th:src="@{js/bootstrap.min.js}"></script>
+    <script th:src="@{js/popper.min.js}"></script>
+
+    <script th:src="@{js/slick.min.js}"></script>
+
+    <script th:src="@{js/isotope.pkgd.min.js}"></script>
+
+    <script th:src="@{js/imagesloaded.pkgd.min.js}"></script>
+
+    <script th:src="@{js/jquery.magnific-popup.min.js}"></script>
+
+    <script th:src="@{js/scrolling-nav.js}"></script>
+    <script th:src="@{js/jquery.easing.min.js}"></script>
+
+
+    <script th:src="@{js/wow.min.js}"></script>
+
+    <script th:src="@{js/main.js}"></script>
+
+    <script th:src="@{js/popper.min.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" th:src="@{js/funciones.js}" src="js/funciones.js"></script>
+
+</body>
+
+<!-- Button trigger modal -->
+  
+  
+  <!-- SHOW PHOTOS Modal -->
+  <div class="modal fade" id="showPhotosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Fotos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <img src="..." class="rounded float-start" alt="...">
+            <img src="..." class="rounded float-end" alt="...">
+            <img src="..." class="rounded float-start" alt="...">
+
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</html>

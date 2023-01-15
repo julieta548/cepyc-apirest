@@ -1,0 +1,21 @@
+.productPhoto
+{
+    width: 50%;
+    border-radius: 15px;
+}
+
+.photoContainer{
+    display: flex;
+    justify-content: center;
+    width: 85vw;
+    max-width: 450px;
+    min-width: 320px;
+    margin: auto;
+}
+
+.tabla-wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+
+

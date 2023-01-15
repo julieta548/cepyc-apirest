@@ -1,0 +1,613 @@
+<!doctype html>
+<html
+    lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+    <head>
+        <!--====== Required meta tags ======-->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--====== Title ======-->
+        <title>CEPyC</title>
+        <link rel="stylesheet" th:href="@{css/estilos.css}">
+        <!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" th:href="@{images/logocepyc.png}" type="image/png">
+        <!--====== Bootstrap css ======-->
+        <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+        <!--====== Line Icons css ======-->
+        <!--====== Line Icons css ======-->
+        <link rel="stylesheet" th:href="@{css/LineIcons.css}">
+        <link rel="stylesheet" th:href="@{font-awesome-4.7.0/css/font-awesome.min.css}">
+        <!--====== Magnific Popup css ======-->
+        <link rel="stylesheet" th:href="@{css/magnific-popup.css}">
+        <!--====== Slick css ======-->
+        <link rel="stylesheet" th:href="@{css/slick.css}">
+        <!--====== Animate css ======-->
+        <link rel="stylesheet" th:href="@{css/animate.css}">
+        <!--====== Default css ======-->
+        <link rel="stylesheet" th:href="@{css/default.css}">
+        <!--====== Style css ======-->
+        <link rel="stylesheet" th:href="@{css/style.css}" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    </head>
+    <body>
+        <!--====== PRELOADER PART START-->
+        <div class="contenedor-todo">
+            <div class="preloader">
+                <div class="loader">
+                    <div class="ytp-spinner">
+                        <div class="ytp-spinner-container">
+                            <div class="ytp-spinner-rotator">
+                                <div class="ytp-spinner-left">
+                                    <div class="ytp-spinner-circle"></div>
+                                </div>
+                                <div class="ytp-spinner-right">
+                                    <div class="ytp-spinner-circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PRELOADER PART ENDS ======-->
+            <!--====== NAVBAR PART START ======-->
+            <section class="header-area">
+                <div class="navbar-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <nav class="navbar navbar-expand-lg">
+                                    <a class="navbar-brand" href="#">
+                                        <img src="../images/Nombre completo.png" alt="Logo">
+                                    </a>
+                                    <button
+                                        class="navbar-toggler"
+                                        type="button"
+                                        data-toggle="collapse"
+                                        data-target="#navbarEight"
+                                        aria-controls="navbarEight"
+                                        aria-expanded="false"
+                                        aria-label="Toggle navigation"
+                                    >
+                                        <span class="toggler-icon"></span>
+                                        <span class="toggler-icon"></span>
+                                        <span class="toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse sub-menu-bar" id="navbarEight">
+                                        <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item active">
+                                                <a class="page-scroll" href="#home">INICIO</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="page-scroll" href="#about">¿QUIÉNES SOMOS?</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="page-scroll" href="#portfolio">GALERÍA</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="page-scroll" href="#productos">PRODUCTOS</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="page-scroll" href="#contact">CONTACTO</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="/editable-portada">ADMIN</a>
+                                            </li>
+                                            <li th:if="${sesionAbierta}" class="nav-item">
+                                                <a href="/logout">CERRAR SESION</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                                <!-- navbar -->
+                            </div>
+                        </div>
+                        <!-- row -->
+                    </div>
+                    <!-- container -->
+                </div>
+                <!-- navbar area -->
+                <div id="home" class="slider-area">
+                    <div class="bd-example">
+                        <div id="carouselOne" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselOne" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselOne" data-slide-to="1"></li>
+                                <li data-target="#carouselOne" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item bg_cover active" id="carrusel">
+                                    <div class="carousel-caption">
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-6 col-lg-7 col-sm-10">
+                                                    <h2 class="carousel-title">
+                                                        COOPERATIVA DE LA ECONOMÍA POPULAR Y CIRCULAR
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                        </div>
+                                        <!-- container -->
+                                    </div>
+                                    <!-- carousel caption -->
+                                </div>
+                                <!-- carousel-item -->
+                                <div id="carrusel" class="carousel-item bg_cover" style="background-image: url(../images/PANES-modified.png)">
+                                    <div class="carousel-caption">
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-6 col-lg-7 col-sm-10">
+                                                    <h2 class="carousel-title">
+                                                        COOPERATIVA DE LA ECONOMÍA POPULAR Y CIRCULAR
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                        </div>
+                                        <!-- container -->
+                                    </div>
+                                    <!-- carousel caption -->
+                                </div>
+                                <!-- carousel-item -->
+                                <div id="carrusel" class="carousel-item bg_cover" style="background-image: url(../images/EQUIPO-modified.png)">
+                                    <div class="carousel-caption">
+                                        <div class="container">
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-6 col-lg-7 col-sm-10">
+                                                    <h2 class="carousel-title">
+                                                        COOPERATIVA DE LA ECONOMÍA POPULAR Y CIRCULAR
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                        </div>
+                                        <!-- container -->
+                                    </div>
+                                    <!-- carousel caption -->
+                                </div>
+                                <!-- carousel-item -->
+                            </div>
+                            <!-- carousel-inner -->
+                            <a
+                                class="carousel-control-prev"
+                                href="#carouselOne"
+                                role="button"
+                                data-slide="prev"
+                            >
+                                <span class="material-symbols-outlined">
+                                    arrow_back_ios
+                                </span>
+                            </a>
+                            <a
+                                class="carousel-control-next"
+                                href="#carouselOne"
+                                role="button"
+                                data-slide="next"
+                            >
+                                <span class="material-symbols-outlined">
+                                    arrow_forward_ios
+                                </span>
+                            </a>
+                        </div>
+                        <!-- carousel -->
+                    </div>
+                    <!-- bd-example -->
+                </div>
+            </section>
+            <!--====== NAVBAR PART ENDS ======-->
+            <!--====== ABOUT PART START ======-->
+            <section id="about" class="about-area">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-6 col-lg-8">
+                            <div class="about-image text-center wow fadeInUp" data-wow-duration="0.5s" data-wow-offset="100">
+                                <img src="../images/logocepyc.png" alt="services">
+                            </div>
+                            <div class="section-title text-center mt-30 pb-40">
+                                <h4 class="title wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
+                                    ¿QUIÉNES SOMOS?
+                                </h4>
+                                <p class="text wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
+                                    Somos una Cooperativa
+                            de Economía Popular y Circular de la provincia de Mendoza.
+                                </p>
+                            </div>
+                            <!-- section title -->
+                        </div>
+                    </div>
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
+                                <div class="about-icon">
+                                    <img src="../images/logocepyc.png" alt="Icon">
+                                </div>
+                                <div class="about-content media-body">
+                                    <h4 class="about-title">¿QUÉ HACEMOS?</h4>
+                                    <p class="text">
+                                        Articulamos con trabajadores de la Economía Popular organizados en Unidades
+                                Productivas en pos de lograr la sostenibilidad económica y ambiental de sus actividades,
+                                a partir de la comercialización, financimiento y asesoramiento. De esta forma bscamos
+                                garantizar productos y servicios a un precio justo y de calidad.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- single about -->
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-about d-sm-flex mt-30 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
+                                <div class="about-icon">
+                                    <img src="../images/logocepyc.png" alt="Icon">
+                                </div>
+                                <div class="about-content media-body">
+                                    <h4 class="about-title">¿QUÉ BUSCAMOS?</h4>
+                                    <p class="text">
+                                        Revalorizar el trabajo de las Unidades Productivas de la Economía Popular,
+                                mejorando sus condiciones laborales y comerciales. De esta manera, contribuir al
+                                fortalecimiento de las economías regionales para transitar hacia una economía circular,
+                                inclusiva y justa.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- single about -->
+                        </div>
+                    </div>
+                    <!-- row -->
+                </div>
+                <!-- container -->
+            </section>
+            <!--====== ABOUT PART ENDS ======-->
+            <div id="container-valores" class="row my-5">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>Trabajo como ordenador social</h3>
+                        <!-- <p>Desarrollo de la idea. Desarrollo de la idea. Desarrollo de la idea. Desarrollo de la idea.
+                     </p> -->
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>Solidaridad y Cooperativismo Regional</h3>
+                        <!-- <p>Desarrollo de la idea. Desarrollo de la idea. Desarrollo de la idea. Desarrollo de la idea.
+                     </p> -->
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="service-block-inner">
+                        <h3>Justicia ambiental es Justicia Social</h3>
+                        <!-- <p>Desarrollo de la idea. Desarrollo de la idea. Desarrollo de la idea. Desarrollo de la idea.
+                    </p> -->
+                    </div>
+                </div>
+            </div>
+            <!--====== portfolio PART START ======-->
+            <section id="portfolio" class="portfolio-area">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="section-title text-center pb-20">
+                                <h3 class="title">Lo que hacemos...</h3>
+                                <p class="text">
+                                    Te mostramos el trabajo y los productos de las Unidades Productivas que forman
+                            parte de la CEPyC.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <section>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="portfolio-menu pt-30 text-center">
+                                    <ul>
+                                        <!-- <li data-filter="*" class="active">TODAS</li>
+                                <li data-filter=".proceso">Proceso</li>
+                                <li data-filter=".unidades">Unidades Productivas</li>
+                                <li data-filter=".productos">Productos</li> --></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row grid">
+                            <div class="proceso col-lg-4 col-sm-6 branding-3 planning-3">
+                                <div class="single-portfolio mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                                    <div class="portfolio-image">
+                                        <img class="imagen-igual" src="../images/compras.svg" alt="img.jpg">
+                                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                                            <div class="portfolio-content">
+                                                <div class="portfolio-icon">
+                                                    <a class="image-popup" src="../images/compras.svg">
+                                                        <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 branding-3 planning-3">
+                                <div class="single-portfolio mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                                    <div class="portfolio-image">
+                                        <img class="imagen-igual" src="../images/compras.svg" alt="img.jpg">
+                                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                                            <div class="portfolio-content">
+                                                <div class="portfolio-icon">
+                                                    <a class="image-popup" href="../images/compras.svg">
+                                                        <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 branding-3 planning-3">
+                                <div class="single-portfolio mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                                    <div class="portfolio-image">
+                                        <img class="imagen-igual" src="../images/compras.svg" alt="img.jpg">
+                                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                                            <div class="portfolio-content">
+                                                <div class="portfolio-icon">
+                                                    <a class="image-popup" href="../images/compras.svg">
+                                                        <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 branding-3 planning-3">
+                                <div class="single-portfolio mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                                    <div class="portfolio-image">
+                                        <img class="imagen-igual" src="../images/compras.svg" alt="img.jpg">
+                                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                                            <div class="portfolio-content">
+                                                <div class="portfolio-icon">
+                                                    <a class="image-popup" href="../images/compras.svg">
+                                                        <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 branding-3 planning-3">
+                                <div class="single-portfolio mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                                    <div class="portfolio-image">
+                                        <img class="imagen-igual" src="../images/compras.svg" alt="img.jpg">
+                                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                                            <div class="portfolio-content">
+                                                <div class="portfolio-icon">
+                                                    <a class="image-popup" href="../images/compras.svg">
+                                                        <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6 branding-3 planning-3">
+                                <div class="single-portfolio mt-30 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                                    <div class="portfolio-image">
+                                        <img class="imagen-igual" src="../images/compras.svg" alt="img.jpg">
+                                        <div class="portfolio-overlay d-flex align-items-center justify-content-center">
+                                            <div class="portfolio-content">
+                                                <div class="portfolio-icon">
+                                                    <a class="image-popup" href="../images/compras.svg">
+                                                        <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- container -->
+            </section>
+            <!--====== portfolio PART ENDS ======-->
+            <div id="productos">
+                <section id="testimonial" class="testimonial-area">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <div class="section-title text-center pb-20">
+                                    <h3 class="title">Productos</h3>
+                                    <p class="text">Aquí podés ver los productos realizados por las Unidades Productivas de diferentes departamentos de la provincia de Mendoza. Productos realizados por trabajadoras y trabajadores de la economía popular.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                    </div>
+                    <div class="ver-todos">
+                        <h5>
+                            <a th:href="@{/producto/todos}">Ver todos</a>
+                        </h5>
+                    </div>
+                    <!-- PRUEBA -->
+                    <div id="carouselExampleControls" class="carousel-products slide" data-bs-ride="carousel">
+                        <div class="cards-wrapper">
+                            <!-- card -->
+                            <div class="carousel__container">
+                                <div id="item-producto" class="carousel__item" th:each="producto: ${productos}">
+                                    <img class="carousel__item__img" th:src="'data:image/jpeg;base64,' + ${encoder.encodeToString(producto.getFoto().getContenido())}" alt="">
+                                    <div class="carousel__item__details">
+                                        <div>
+                                            <p class="carousel__item__details__title" th:text="${producto.nombre}"></p>
+                                            <p class="carousel__item__details__subtitle" th:text="${producto.descripcion}"></p>
+                                            <a class="a-vermas" th:href="@{/producto/single/{id}(id=${producto.id})}">Ver más</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+</div>
+<hr class="lineaMansa4">
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title text-center">
+                    <h2 class="mb-3">Última Actividad</h2>
+                    <h6 th:if="${linksPublicaciones.size() == 0}" class="text">
+                        ¡ No hay publicaciones disponibles !
+                    </h6>
+                    <div class="container">
+                        <div class="row">
+                            <section th:each="link : ${linksPublicaciones}">
+                                <div class="col-4 m-2">
+                                    <iframe
+                                        th:src="${link}"
+                                        width="320"
+                                        height="410"
+                                        frameborder="0"
+                                        scrolling="no"
+                                        allowtransparency="true"
+                                    ></iframe>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="lineaMansa4">
+<!--====== CONTACT TWO PART START ======-->
+<section id="contact" class="contact-area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center pb-20">
+                    <h3 class="title">Contactanos</h3>
+                    <p class="text">Para más información contactanos</p>
+                </div>
+                <!-- section title -->
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row justify-content-center">
+            <div class="contact-two mt-50 wow fadeIn" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                <ul class="contact-info">
+                    <li>
+                        <i class="fa fa-mobile" aria-hidden="true"></i> 261 123456
+                    </li>
+                    <li>
+                        <i class="fa fa-instagram" aria-hidden="true"></i> @cepyc_
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i> cepycmendoza@gmail.com
+                    </li>
+                </ul>
+            </div>
+            <!-- contact two -->
+        </div>
+    </section>
+    <!-- End Contact Section -->
+    <footer>
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="copyright text-center text-lg-right mt-10">
+                            <p class="text">Creado por
+                                <a style="color: #135cb1" rel="nofollow" href="#">
+                                    OkeySoftware
+                                </a> - 2023
+                            </p>
+                        </div>
+                        <!--  copyright -->
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="footer-logo text-center mt-10">
+                            <a href="#home">
+                                <img class="logo-footer" src="../images/Logocepyc.png" alt="Logo">
+                            </a>
+                        </div>
+                        <!-- footer logo -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- footer copyright -->
+    </footer>
+    <!--====== FOOTER FOUR PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+    <a href="#" class="back-to-top">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </a>
+    <!--====== BACK TOP TOP PART ENDS ======-->
+    <!--====== PART START ======-->
+</div>
+<!--====== PART ENDS ======-->
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48
+        }
+</style>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48
+        }
+</style>
+<!-- Vendor JS Files -->
+<script th:src="@{assets/vendor/aos/aos.js}"></script>
+<script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+<!-- Template Main JS File -->
+<script th:src="@{assets/js/main.js}"></script>
+<!--====== jquery js ======-->
+<script th:src="@{js/vendor/modernizr-3.6.0.min.js}"></script>
+<script th:src="@{js/vendor/jquery-1.12.4.min.js}"></script>
+<!--====== Bootstrap js ======-->
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/popper.min.js}"></script>
+<!--====== Slick js ======-->
+<script th:src="@{js/slick.min.js}"></script>
+<!--====== Isotope js ======-->
+<script th:src="@{js/isotope.pkgd.min.js}"></script>
+<!--====== Images Loaded js ======-->
+<script th:src="@{js/imagesloaded.pkgd.min.js}"></script>
+<!--====== Magnific Popup js ======-->
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<!--====== Scrolling js ======-->
+<script th:src="@{js/scrolling-nav.js}"></script>
+<script th:src="@{js/jquery.easing.min.js}"></script>
+<!--====== wow js ======-->
+<script th:src="@{js/wow.min.js}"></script>
+<!--====== Main js ======-->
+<script th:src="@{/js/main.js}"></script>
+<!-- ALL JS FILES -->
+<script th:src="@{js/popper.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script src="/js/funciones.js"></script>
+</body>
+</html>
